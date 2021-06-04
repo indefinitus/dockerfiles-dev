@@ -48,6 +48,6 @@ RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-m
 RUN echo "autoload -U compinit && compinit" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=\"fg=7\"" >> ~/.zshrc
 RUN echo "export TIMER_PRECISION=2" >> ~/.zshrc
-RUN printf '%s\n' "export TIMER_FORMAT=\"\\n\$fg[white]Time: %d\"" >> ~/.zshrc
+RUN printf '%s\n' 'export TIMER_FORMAT="\n\$fg[white]Time: %d"' >> ~/.zshrc
 
 CMD ["zsh"]
