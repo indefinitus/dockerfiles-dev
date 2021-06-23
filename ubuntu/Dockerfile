@@ -39,7 +39,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 
 # change default zsh theme
 RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
-RUN sed -i 's/^plugins=.*/plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
+RUN sed -i 's/^plugins=.*/plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions brew)/' ~/.zshrc
 
 # zsh plugins
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -47,7 +47,5 @@ RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUS
 RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 RUN echo "autoload -U compinit && compinit" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=\"fg=7\"" >> ~/.zshrc
-RUN echo "export TIMER_PRECISION=2" >> ~/.zshrc
-RUN printf '%s\n' 'export TIMER_FORMAT="\n$fg[white]Time: %d"' >> ~/.zshrc
 
 CMD ["zsh"]
