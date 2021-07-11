@@ -42,13 +42,17 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 
 # change default zsh theme
 RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
-RUN sed -i 's/^plugins=.*/plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions brew)/' ~/.zshrc
+RUN sed -i 's/^plugins=.*/plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions brew command-time)/' ~/.zshrc
 
 # zsh plugins
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+RUN git clone https://github.com/popstas/zsh-command-time.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/command-time
+
 RUN echo "autoload -U compinit && compinit" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=\"fg=7\"" >> ~/.zshrc
+RUN echo "ZSH_COMMAND_TIME_MIN_SECONDS=0" >> ~/.zshrc
+RUN echo 'ZSH_COMMAND_TIME_MSG="Execution time: %s"' >> ~/.zshrc
 
 CMD ["zsh"]
