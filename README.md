@@ -5,6 +5,7 @@ A set of dockerfiles ready to build
 
 - debian
 - ubuntu
+- archlinux
 
 # Usage
 ```bash
