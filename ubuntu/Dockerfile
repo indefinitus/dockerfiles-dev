@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y \
     iputils-ping \
     iproute2 \
     net-tools \
+    dnsutils \
     && rm -rf /var/lib/apt/lists/*
 
 # timezone setup
@@ -42,7 +43,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 
 # change default zsh theme
 RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
-RUN sed -i 's/^plugins=.*/plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions brew command-time)/' ~/.zshrc
+RUN sed -i 's/^plugins=.*/plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions brew command-time sudo)/' ~/.zshrc
 
 # zsh plugins
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
