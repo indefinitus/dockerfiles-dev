@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-
+ARG DEBIAN_FRONTEND=noninteractive
 # Set the locale
 RUN apt-get update && apt-get install -y \
     locales \
@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
 
 # timezone setup
 ENV TZ=Asia/Singapore
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get update && apt-get install -y \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
